@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brand Story</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        line-height: 1.5;
+        background: #ffffef;
+      }
+
+      .navbar {
+        margin: 0;
+        padding: 0px 150px;
+        z-index: 1;
+      }
+
+      .navbar-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-height: 77px;
+        padding: 17px 16px;
+      }
+
+      .navbar-left img {
+        max-height: 43px;
+        cursor: pointer;
+      }
+
+      .navbar-right ul {
+        display: flex;
+        flex-flow: row wrap;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        gap: 30px;
+      }
+
+      .navbar-right ul li {
+        margin-left: 20px;
+      }
+
+      .navbar-right ul li a {
+        text-decoration: none;
+        font-size: 16px;
+        color: #005840;
+        transition: color 0.3s ease;
+        padding-bottom: 5px;
+        cursor: pointer;
+      }
+
+      .navbar-right ul li a:hover {
+        color: #005840;
+        border-bottom: 2px solid #005840;
+      }
+
+      .cta-button:hover {
+        color: rgb(157, 255, 145);
+      }
+
+      .main-content {
+        text-align: center;
+        padding: 8rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .headline {
+        font-size: 4rem;
+        color: rgb(0, 87, 63);
+        line-height: 1.2;
+        margin-bottom: 1rem;
+      }
+
+      .headline-brands {
+        font-style: italic;
+      }
+
+      .subheadline {
+        font-size: 1.1rem;
+        color: rgb(51, 51, 51);
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto 2rem auto;
+      }
+
+      .cta-button {
+        color: rgba(252, 252, 210, 0.88);
+        background-color: #005840;
+        padding: 1rem 2rem;
+        border-radius: 2rem;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+        transition: background-color 0.3s ease;
+      }
+
+      .spots-text {
+        color: rgb(51, 51, 51);
+        font-size: 0.9rem;
+      }
+
+      .features {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        line-height: 1.5;
+      }
+
+      .feature-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .feature-section {
+        margin-bottom: 4rem;
+      }
+
+      .feature-image-container {
+        width: 100%;
+        height: 300px;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 2rem;
+      }
+
+      .feature-image-container.brand-guide {
+        background: #006655;
+      }
+
+      .feature-image-container.homes-logo {
+        background: #003366;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .feature-text {
+        text-align: center;
+        color: #006655;
+        font-size: 1.5rem;
+        padding: 1rem;
+        margin-bottom: 4rem;
+      }
+
+      /*------------- Selected Work */
+      .selectedWork {
+        padding: 2rem;
+      }
+
+      .selected-work-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .selected-work-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .selected-work-header h1 {
+        color: #115e59;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .works-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 300px;
+        gap: 1.5rem;
+      }
+
+      .work-item {
+        position: relative;
+        border-radius: 1rem;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+
+      .work-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .work-item:nth-child(1) {
+        grid-column: 1;
+        grid-row: 1;
+        background-color: #1a1a2e;
+      }
+
+      .work-item:nth-child(2) {
+        grid-column: 2;
+        grid-row: 1;
+        background-color: #ff4500;
+      }
+
+      .work-item:nth-child(3) {
+        grid-column: 1;
+        grid-row: 2;
+        background-color: #1a1a1a;
+      }
+
+      .work-item:nth-child(4) {
+        grid-column: 2;
+        grid-row: 2;
+        background-color: #2f6b62;
+      }
+
+      .work-item:nth-child(5) {
+        grid-column: 1;
+        grid-row: 3;
+        background-color: #1e3a8a;
+      }
+
+      .work-item:nth-child(6) {
+        grid-column: 2;
+        grid-row: 3;
+        background-color: #f0f0f0;
+      }
+
+      .work-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.3s ease;
+      }
+
+      .work-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .work-item:hover .work-overlay {
+        opacity: 1;
+      }
+
+      /*  ------ Testimonials*/
+      .testimonials {
+        padding: 2rem;
+        line-height: 1.6;
+      }
+
+      .testimonials-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .testimonials-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .testimonials-header h1 {
+        color: #115e59;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .testimonials-card {
+        background-color: #115e59;
+        border-radius: 1rem;
+        padding: 3rem 2rem;
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+
+      .testimonial {
+        display: flex;
+        gap: 1rem;
+        color: white;
+      }
+
+      .testimonial-image {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background-color: #e5e7eb;
+        flex-shrink: 0;
+      }
+
+      .testimonial-content {
+        flex-grow: 1;
+      }
+
+      .testimonial-text {
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .testimonial-text strong {
+        color: #4ade80;
+      }
+
+      .testimonial-author {
+        color: #4ade80;
+        font-size: 0.9rem;
+        position: relative;
+        padding-left: 1rem;
+      }
+
+      .testimonial-author::before {
+        content: "—";
+        position: absolute;
+        left: 0;
+      }
+
+      /*------------About Me*/
+      .aboutMe {
+        padding: 2rem;
+        line-height: 1.6;
+      }
+
+      .about-me-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .about-me-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .about-me-header h1 {
+        color: #115e59;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .aboutme-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .aboutme-card {
+        padding: 2rem;
+        border-radius: 1rem;
+        height: 100%;
+      }
+
+      .intro-card {
+        background-color: #115e59;
+        color: white;
+        grid-row: span 2;
+      }
+
+      .intro-card h2 {
+        color: #4ade80;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .stats-card {
+        background-color: #bae6fd;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .stats-number {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #0c4a6e;
+        margin-bottom: 0.5rem;
+      }
+
+      .stats-text {
+        color: #0c4a6e;
+        font-size: 0.9rem;
+      }
+
+      .experience-card {
+        background-color: #fcd34d;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .vision-card {
+        background-color: #fecdd3;
+        padding: 2.5rem;
+        grid-column: 1 / -1;
+      }
+
+      .vision-card em {
+        font-style: italic;
+        color: #be185d;
+      }
+
+      .portfolio-card {
+        background-color: #bae6fd;
+        padding: 2rem;
+      }
+
+      .portfolio-card em {
+        font-style: italic;
+      }
+
+      .views-card {
+        background-color: #115e59;
+        color: #4ade80;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .views-number {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+
+      /*------------------Brands*/
+      .brands {
+        padding: 2rem 1rem;
+      }
+      .brands-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .brands-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .brands-header h1 {
+        color: #0f766e;
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .brands-header p {
+        color: #374151;
+        max-width: 800px;
+        margin: 0 auto 2rem;
+        line-height: 1.6;
+      }
+
+      .brands-try-button {
+        display: inline-block;
+        background-color: #0f766e;
+        color: white;
+        padding: 0.75rem 2rem;
+        border-radius: 9999px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.3s;
+      }
+
+      .brands-try-button:hover {
+        background-color: #115e59;
+      }
+
+      .brands-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 1rem;
+      }
+
+      .brands-card {
+        background: white;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .brands-card-image {
+        width: 100%;
+        height: 250px;
+        background-color: #f3f4f6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .brands-card-image img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+      }
+
+      .brands-card-content {
+        padding: 1rem;
+        text-align: center;
+      }
+
+      .brands-card-title {
+        font-size: 1.25rem;
+        color: #374151;
+        margin-bottom: 0.5rem;
+      }
+
+      /*------------------ Logo Store*/
+      .logo-store-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        text-align: center;
+        background-color: #fffaf5;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .logo-icon {
+        width: 60px;
+        height: 60px;
+        background-color: #4ade80;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+      }
+
+      .logo-icon svg {
+        width: 32px;
+        height: 32px;
+        color: white;
+      }
+
+      .store-heading {
+        font-size: 2.5rem;
+        color: #065f46;
+        margin-bottom: 24px;
+        font-weight: 600;
+      }
+
+      .store-description {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #065f46;
+        max-width: 800px;
+        margin: 0 auto 40px;
+      }
+
+      .explore-button {
+        background-color: #065f46;
+        color: white;
+        font-size: 1.25rem;
+        padding: 16px 32px;
+        border-radius: 9999px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .explore-button:hover {
+        background-color: #047857;
+      }
+
+      /*--------------Brand Guide*/
+
+      .brandGuide {
+        background-color: rgb(255, 253, 244);
+        padding: 2rem;
+      }
+
+      .brand-guide-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .brand-guide-logo {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 1.5rem;
+      }
+
+      .brand-guide-logo svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      .brand-guide-title {
+        color: rgb(0, 87, 63);
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .brand-guide-description {
+        color: rgb(0, 87, 63);
+        font-size: 1.1rem;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto 2rem auto;
+      }
+
+      .brand-guide-cta-button {
+        display: inline-block;
+        background-color: rgb(0, 87, 63);
+        color: white;
+        text-decoration: none;
+        padding: 1rem 2rem;
+        border-radius: 2rem;
+        font-size: 1.1rem;
+        margin-bottom: 3rem;
+      }
+
+      .brand-guide-template-preview {
+        width: 100%;
+        height: 500px;
+        background-color: #f0f0f0;
+        border-radius: 1rem;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /*-----------------Contact me*/
+      .contactMe {
+        background-color: rgb(255, 253, 244);
+        padding: 2rem;
+      }
+
+      .contact-me-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .contact-me-header-logo {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 1rem;
+      }
+
+      .contact-me-header-title {
+        color: rgb(0, 87, 63);
+        font-size: 2rem;
+      }
+
+      .contact-me-content-wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .project-card {
+        background-color: rgb(0, 87, 63);
+        padding: 3rem;
+        border-radius: 1.5rem;
+        color: white;
+      }
+
+      .project-title {
+        font-size: 3rem;
+        color: rgb(162, 255, 162);
+        margin-bottom: 2rem;
+      }
+
+      .project-description {
+        font-size: 1.2rem;
+        line-height: 1.5;
+      }
+
+      .form-card {
+        background-color: rgb(162, 255, 162);
+        padding: 3rem;
+        border-radius: 1.5rem;
+      }
+
+      .input-field {
+        width: 100%;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border: none;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+      }
+
+      .message-field {
+        width: 100%;
+        height: 150px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border: none;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        resize: vertical;
+        background-color: rgb(255, 253, 244);
+      }
+
+      .submit-button {
+        background-color: rgb(0, 87, 63);
+        color: white;
+        padding: 0.8rem 2rem;
+        border: none;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+
+      /*---------Footer*/
+      .footer {
+        background-color: rgb(0, 87, 63);
+        padding: 2rem;
+        border-radius: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+      }
+
+      .footer-left {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .footer-logo {
+        width: 30px;
+        height: 30px;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .social-link {
+        color: white;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-content">
+        <div class="navbar-left">
+          <img src="/Images/navbar-logo.avif" alt="Logo" />
+        </div>
+        <div class="navbar-right">
+          <ul>
+            <li><a href="#home">Work</a></li>
+            <li><a href="#about">Testimonials</a></li>
+            <li><a href="#services">About</a></li>
+            <li><a href="#portfolio">Contact</a></li>
+            <li><a href="#contact">Logo Store</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero-section">
+      <main class="main-content">
+        <h1 class="headline">
+          Crafting simple, effective<br />
+          <span class="headline-brands">Brands</span> for tech innovators
+        </h1>
+        <p class="subheadline">
+          We partner with fintech, SaaS, and AI startups to transform technical
+          complexities into compelling brand identities that resonate with your
+          audience.
+        </p>
+        <a href="#" class="cta-button">Get in touch</a>
+        <p class="spots-text">1 available spot</p>
+      </main>
+    </section>
+
+    <section class="features">
+      <div class="feature-container">
+        <div class="feature-section">
+          <div class="feature-image-container brand-guide"></div>
+          <div class="feature-text">Let's tell your brand story!</div>
+        </div>
+
+        <div class="feature-section">
+          <div class="feature-image-container homes-logo">
+            <img />
+          </div>
+          <div class="feature-text">Ready to make some magic happen?</div>
+        </div>
+
+        <div class="feature-section">
+          <div class="feature-image-container homes-logo">
+            <img />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="selectedWork">
+      <div class="selected-work-container">
+        <header class="selected-work-header">
+          <h1>Selected works</h1>
+        </header>
+
+        <div class="works-grid">
+          <div class="work-item">
+            <div class="work-overlay">ZOOX</div>
+          </div>
+
+          <div class="work-item">
+            <div class="work-overlay">Homes.co</div>
+          </div>
+
+          <div class="work-item">
+            <div class="work-overlay">Green Spirit</div>
+          </div>
+
+          <div class="work-item">
+            <div class="work-overlay">Healthcare</div>
+          </div>
+
+          <div class="work-item">
+            <div class="work-overlay">Sophony</div>
+          </div>
+
+          <div class="work-item">
+            <div class="work-overlay">PaytAI</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <div class="testimonials-container">
+        <header class="testimonials-header">
+          <h1>What my clients say</h1>
+        </header>
+
+        <div class="testimonials-card">
+          <div class="testimonials-grid">
+            <div class="testimonial">
+              <div class="testimonial-image"></div>
+              <div class="testimonial-content">
+                <p class="testimonial-text">
+                  "Ahmad's design for our firm was better than expected. He
+                  listened to what we wanted and created numerous versions of
+                  the logo that we use each day. I strongly recommend Ahmad
+                  enough for any branding needs - you will not be disappointed
+                  with the final."
+                </p>
+                <div class="testimonial-author">Jordan S. Cohen</div>
+              </div>
+            </div>
+
+            <div class="testimonial">
+              <div class="testimonial-image"></div>
+              <div class="testimonial-content">
+                <p class="testimonial-text">
+                  "The artwork was incredible and unique. I cannot recommend
+                  Ahmad enough. He was quick, responsive, and extremely
+                  professional. He is a true artist with a big heart. It's great
+                  to collaborate with him again!"
+                </p>
+                <div class="testimonial-author">Danny Kevin Ryan</div>
+              </div>
+            </div>
+
+            <div class="testimonial">
+              <div class="testimonial-image"></div>
+              <div class="testimonial-content">
+                <p class="testimonial-text">
+                  "We needed a memorable logo for a lifestyle, fitness and
+                  couples therapy company, reflecting everything that
+                  distinguishes our company claim to be well established and
+                  appear trustworthy. Ahmad listened and delivered a timeless,
+                  beautiful logo that still anchors our clients identity."
+                </p>
+                <div class="testimonial-author">Hendrik Stirke</div>
+              </div>
+            </div>
+
+            <div class="testimonial">
+              <div class="testimonial-image"></div>
+              <div class="testimonial-content">
+                <p class="testimonial-text">
+                  I recently had the pleasure of collaborating with Ahmad and
+                  his designs were precisely what we were hoping to receive. As
+                  an added bonus, Ahmad is a consummate professional who took
+                  the time to show us a clear path of logic around his design
+                  process.
+                </p>
+                <div class="testimonial-author">Jerrisa Williams</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="aboutMe">
+      <div class="about-me-container">
+        <header class="about-me-header">
+          <h1>About me</h1>
+        </header>
+
+        <div class="aboutme-grid">
+          <div class="aboutme-card intro-card">
+            <h2>
+              I create logos and brand identities that make brands stand out and
+              shine.
+            </h2>
+            <p>
+              Hey there, I'm Ahmad, a creative wizard specializing in crafting
+              sleek and powerful logos and brand identities. My secret sauce? A
+              love for all things minimalistic, where less is definitely more.
+              I'm all about using colors, shapes, and icons to tell stories,
+              make serious magic and make your brand shine. I'm a firm believer
+              in the art of subtlety and simplicity. By tapping into the
+              psychology of color, the symbolism of shapes, and the language of
+              visuals, I can dig deep into awesome layers that you can reach out
+              and touch. Let's go on this creative design magic together!
+            </p>
+          </div>
+
+          <div class="aboutme-card stats-card">
+            <div class="stats-number">100+</div>
+            <div class="stats-text">
+              I have worked with more than 100+ clients worldwide
+            </div>
+          </div>
+
+          <div class="aboutme-card experience-card">
+            <div class="stats-number">10+</div>
+            <div class="stats-text">Years of experience</div>
+          </div>
+
+          <div class="aboutme-card vision-card">
+            <p>
+              I listen to your <em>vision</em>: What are you passionate about?
+              How can we create a <em>brand</em> that reflects your
+              <em>values</em> and attracts your customers?
+            </p>
+          </div>
+
+          <div class="aboutme-card portfolio-card">
+            <p>
+              My work has been <em>featured</em> on many design platforms and
+              design books, such as <em>Behance, Dribbble, Logo Lounge</em> and
+              more.
+            </p>
+          </div>
+
+          <div class="aboutme-card views-card">
+            <div class="views-number">406,735+</div>
+            <div class="stats-text">Project views</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="brands">
+      <div class="brands-container">
+        <div class="brands-header">
+          <h1>Brand sprints for startups</h1>
+          <p>
+            Do you need a brand that stands out from the crowd and resonates
+            with your target audience? Do you want to avoid wasting time and
+            money on endless revisions and feedback loops? Do you want to launch
+            your brand in just two weeks?
+          </p>
+          <a href="#" class="brands-try-button">Try Brand Sprint</a>
+        </div>
+
+        <div class="brands-grid">
+          <div class="brands-card">
+            <div class="brands-card-image">
+              <!-- Grow Brand Sprint image would go here -->
+            </div>
+            <div class="brands-card-content">
+              <h3 class="brands-card-title">Grow Brand Sprint</h3>
+            </div>
+          </div>
+
+          <div class="brands-card">
+            <div class="brands-card-image">
+              <!-- Noblecare Brand Sprint image would go here -->
+            </div>
+            <div class="brands-card-content">
+              <h3 class="brands-card-title">Noblecare Brand Sprint</h3>
+            </div>
+          </div>
+
+          <div class="brands-card">
+            <div class="brands-card-image">
+              <!-- Proplus Brand Sprint image would go here -->
+            </div>
+            <div class="brands-card-content">
+              <h3 class="brands-card-title">Proplus Brand Sprint</h3>
+            </div>
+          </div>
+
+          <div class="brands-card">
+            <div class="brands-card-image">
+              <!-- Sophony Brand Sprint image would go here -->
+            </div>
+            <div class="brands-card-content">
+              <h3 class="brands-card-title">Sophony Brand Sprint</h3>
+            </div>
+          </div>
+
+          <div class="brands-card">
+            <div class="brands-card-image">
+              <!-- Deposit Brand Sprint image would go here -->
+            </div>
+            <div class="brands-card-content">
+              <h3 class="brands-card-title">Deposit Brand Sprint</h3>
+            </div>
+          </div>
+
+          <div class="brands-card">
+            <div class="brands-card-image">
+              <!-- Highradius Brand Sprint image would go here -->
+            </div>
+            <div class="brands-card-content">
+              <h3 class="brands-card-title">Highradius Brand Sprint</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="logoStore">
+      <div class="logo-store-container">
+        <div class="logo-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"
+            />
+          </svg>
+        </div>
+
+        <h1 class="store-heading">Logo store</h1>
+
+        <p class="store-description">
+          Tired of scouring the internet for the perfect logo? Look no further!
+          Our brand identity design studio has curated a collection of
+          ready-made logos that are not only visually stunning but also
+          affordable. Whether you're a small biz, a startup, or a big-shot
+          enterprise, our pre-made logos are the perfect sidekick to kickstart
+          your branding journey.
+        </p>
+
+        <button class="explore-button">Explore Logos</button>
+      </div>
+    </section>
+
+    <section class="brandGuide">
+      <div class="brand-guide-container">
+        <div class="brand-guide-logo"></div>
+
+        <h1 class="brand-guide-title">Brand Guideline Template</h1>
+
+        <p class="brand-guide-description">
+          Are you tired of sifting through lackluster brand guidelines? Look no
+          further! Our meticulously crafted 80-page brand guideline template is
+          a game-changer for designers. Our template exudes elegance, just like
+          a high-end design agency. Say goodbye to bland guidelines!
+        </p>
+
+        <a href="#" class="brand-guide-cta-button">Buy Template</a>
+
+        <div class="brand-guide-template-preview"></div>
+      </div>
+    </section>
+
+    <section class="contactMe">
+      <header class="contact-me-header">
+        <svg class="contact-me-header-logo" viewBox="0 0 100 100"></svg>
+        <h1 class="contact-me-header-title">Work with me</h1>
+      </header>
+
+      <div class="contact-me-content-wrapper">
+        <div class="project-card">
+          <h2 class="project-title">Have a project?</h2>
+          <p class="project-description">
+            If you have an interesting project in mind, don't hesitate to
+            contact me and figure out how I can help.
+          </p>
+        </div>
+
+        <div class="form-card">
+          <form>
+            <input
+              type="text"
+              class="input-field"
+              placeholder="Name"
+              required
+            />
+            <input
+              type="text"
+              class="input-field"
+              placeholder="Budget"
+              required
+            />
+            <input
+              type="email"
+              class="input-field"
+              placeholder="Email address"
+              required
+            />
+            <textarea
+              class="message-field"
+              placeholder="Enter your message"
+              required
+            ></textarea>
+            <button type="submit" class="submit-button">Submit</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-left">
+        <svg class="footer-logo" viewBox="0 0 100 100"></svg>
+        <span>Ahmed Creatives © 2024</span>
+      </div>
+      <div class="social-links">
+        <a href="#" class="social-link">🏀</a>
+        <a href="#" class="social-link">Be</a>
+        <a href="#" class="social-link">📸</a>
+        <a href="#" class="social-link">𝕏</a>
+        <a href="#" class="social-link">✉️</a>
+      </div>
+    </footer>
+  </body>
+</html>
